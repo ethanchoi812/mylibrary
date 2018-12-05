@@ -15,6 +15,14 @@ function Book(title, author, pages, read){
     }
 }
 
+function newBook(){
+    const form = document.getElementById('form');
+    const newBookBtn = document.getElementById('newbook');
+    newBookBtn.onclick = function(){
+        form.style.display === 'none' ? form.style.display = 'block' : form.style.display = 'none';
+    }
+}
+
 function addToLibrary(){
     let book = new Book();
     myLibrary.push(book);
@@ -29,4 +37,7 @@ function render(){
     });
 }
 
-window.onload(render());
+window.onload = function(){
+    render();
+    newBook();
+};
