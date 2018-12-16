@@ -1,17 +1,23 @@
 
+document.getElementById('newbook').onclick = newBook;
 
-window.onload = function(){
-    document.getElementById('newbook').onclick = newBook;
-    
-    let myLibrary = [];
-    document.getElementById('form').onsubmit = function(){
-        event.preventDefault();
 
-        addToLibrary(myLibrary);
-        render(myLibrary);
-    }
+let myLibrary = [];
 
-};
+document.getElementById('form').onsubmit = function(){
+    event.preventDefault();
+    let removeButtons = document.getElementsByClassName('remove');
+
+    addToLibrary(myLibrary);
+    render(myLibrary);
+
+    removeButtons.forEach(function(idx, btn){
+        btn[idx].addEventListener("click", function(){
+            removeBook(myLibrary, idx);
+            render(myLibrary);
+        });
+    });
+}
 
 
 function Book(title, author, pages, read){
@@ -47,13 +53,19 @@ function addToLibrary(lib){
     return lib;
 };
 
+function removeBook(lib, idx){
+   lib.splice(idx, 1);
+   return lib;
+}
+
 
 function render(lib){
     let displayDiv = document.getElementById('display');
     displayDiv.innerHTML = "";
-    console.log(lib);
-    lib.forEach(function(book){
-        displayDiv.innerHTML += `<p>${book.info()}</p>`;
+    //console.log(lib);
+
+    lib.forEach(function(book, idx){
+        displayDiv.innerHTML += `<div class="book-item" data-index="${idx}"><p>${book.info()}<span class="remove">Remove</span></p></div>`;
     });
 };
 
