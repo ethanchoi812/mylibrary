@@ -1,23 +1,19 @@
 
-document.getElementById('newbook').onclick = newBook;
-
-
 let myLibrary = [];
 
-document.getElementById('form').onsubmit = function(){
+document.getElementById('newbook').addEventListener("click", newBook);
+
+document.getElementById('form').addEventListener("submit", function(){
     event.preventDefault();
-    let removeButtons = document.getElementsByClassName('remove');
 
     addToLibrary(myLibrary);
+    //render(myLibrary);
+
     render(myLibrary);
 
-    removeButtons.forEach(function(idx, btn){
-        btn[idx].addEventListener("click", function(){
-            removeBook(myLibrary, idx);
-            render(myLibrary);
-        });
-    });
-}
+});
+
+
 
 
 function Book(title, author, pages, read){
@@ -49,13 +45,13 @@ function addToLibrary(lib){
 
     let book = new Book(title, author, pages, read);
     lib.push(book);
-    //console.log(myLibrary);
+    console.log(myLibrary);
     return lib;
 };
 
-function removeBook(lib, idx){
-   lib.splice(idx, 1);
-   return lib;
+function removeBook(idx){
+   myLibrary.splice(idx, 1);
+   render(myLibrary);
 }
 
 
@@ -65,7 +61,11 @@ function render(lib){
     //console.log(lib);
 
     lib.forEach(function(book, idx){
-        displayDiv.innerHTML += `<div class="book-item" data-index="${idx}"><p>${book.info()}<span class="remove">Remove</span></p></div>`;
+        displayDiv.innerHTML +=
+            `<div class="book-item" data-index="${idx}">
+                <p>${book.info()}<button class="remove" onclick="removeBook(${idx});">Remove</button></p>
+                <button class="isRead">${book.read}</button>
+            </div>`;
     });
 };
 
