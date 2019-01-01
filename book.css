@@ -40,3 +40,9 @@ button {
     padding: 3px 5px;
     margin-left: 12px;
 }
+
+.readLine {
+    text-decoration: underline;
+    font-weight: 400;
+    cursor: pointer;
+}
