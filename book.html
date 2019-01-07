@@ -2,11 +2,14 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="book.css"> 
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans|Roboto+Slab" rel="stylesheet">
     </head>
     <body>
         <h1>My Library</h1>
         <div id="display"></div>
-        <button id="newbook">NEW BOOK</button>
+        <div id="newbook-btn-container">
+            <button id="newbook">Add New Book</button>
+        </div>
         <form id="form" style="display:none">
             <div>
                 <label for="title">Title</label>
@@ -22,9 +25,9 @@
             </div> 
             <div>
                 <label for="read">Have I read it?</label>
-                <input type="checkbox" id="read" name="read" value="read">
+                <input type="checkbox" id="read" name="read">
             </div>
-            <div class="button">
+            <div class="add-btn-container">
                 <button type="submit">Add Book</button>
             </div>
         </form>
