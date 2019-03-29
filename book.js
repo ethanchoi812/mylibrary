@@ -7,7 +7,6 @@ document.getElementById('form').addEventListener("submit", function(){
     event.preventDefault();
 
     addToLibrary(myLibrary);
-    //render(myLibrary);
 
     render(myLibrary);
 
@@ -85,7 +84,6 @@ function clearForm(){
 function render(lib){
     let displayDiv = document.getElementById('display');
     displayDiv.innerHTML = "";
-    //console.log(lib);
 
     lib.forEach(function(book, idx){
         displayDiv.innerHTML +=

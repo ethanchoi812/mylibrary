@@ -11,29 +11,40 @@ h1 {
 
 form {
     background: #fffcad;
-    padding: 30px 20px;  
-    width: 50%;
+    padding: 20px 15px;  
+    width: 100%;
     margin: 0 auto;
     border-radius: 5px;
 }
 
-#form div {
-    margin-bottom: 20px;
+.form-field {
+    display: inline-block;
+    margin-right: 50px;
+
 }
 
-label {
+.form-field label {
     color: #333;
-    font-size: 20px;
+    font-size: 16px;
 }
 
-input {
+.form-field input[type=text],
+.form-field input[type=number]{
+    display: block;
     font-size: 18px;
     padding: 6px 10px;
 }
 
-input[type=text], input[type=number] {
-    display: block;
-    width: 90%;
+.form-field input[type=text] {
+    width: 100%;
+}
+
+.form-field-pages{
+    width: 10%;
+}
+
+.form-field-pages input {
+    width: 100%;
 }
 
 button {
@@ -51,6 +62,10 @@ button {
     margin-bottom: 25px; 
 }
 
+.add-btn-container {
+    display: inline-block;
+}
+
 .add-btn-container button {
     background: #ccc;
     color: #333;
@@ -60,13 +75,13 @@ button {
 #display {
     font-size: 20px;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-top: 20px;
 }
 
 .book-item {
     display: inline-block;
-    background-color: #00ffc3;
-    padding: 10px 16px;
+    border: 1px solid #00ffc3;
+    padding: 15px;
     max-width: 33%; 
     margin: 12px;
     text-align: center;
@@ -84,4 +99,5 @@ button {
     text-decoration: underline;
     font-weight: 400;
     cursor: pointer;
+
 }
