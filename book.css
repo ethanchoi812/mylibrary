@@ -30,7 +30,7 @@ form {
 
 .form-field input[type=text],
 .form-field input[type=number]{
-    display: block;
+    display: inline-block;
     font-size: 18px;
     padding: 6px 10px;
 }
@@ -38,6 +38,7 @@ form {
 .form-field input[type=text] {
     width: 100%;
 }
+
 
 .form-field-pages{
     width: 10%;
@@ -81,7 +82,7 @@ button {
 .book-item {
     display: inline-block;
     border: 1px solid #00ffc3;
-    padding: 15px;
+    padding: 15px 20px;
     max-width: 33%; 
     margin: 12px;
     text-align: center;
@@ -96,8 +97,15 @@ button {
 }
 
 .readLine {
-    text-decoration: underline;
+    border-radius: 1px;
+    float: right;
+    font-size: 12px;
     font-weight: 400;
     cursor: pointer;
+    padding: 2px 5px;
+}
 
+.error-msg {
+    display: inline-block;
+    position: absolute;
 }
