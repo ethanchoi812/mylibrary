@@ -5,13 +5,20 @@ let allFields = document.querySelectorAll(".form-field input[type=\"text\"], .fo
 document.getElementById('newbook').addEventListener("click", newBook);
 
 document.getElementById('form').addEventListener("submit", function(){
-
-    
-    addToLibrary(myLibrary);
-    render(myLibrary);
-    clearForm();
+    let isValid = false;
 
     event.preventDefault();
+
+    isValid = validateForm();
+
+    if (!isValid) {
+    
+        return false;
+    } else {
+        addToLibrary(myLibrary);
+        render(myLibrary);
+        clearForm();
+    }
 });
 
 validation();
@@ -92,8 +99,6 @@ function validation(){
 
     allFields.forEach( field => {
 
-        field.setCustomValidity("");
-
         field.addEventListener("blur", () => {
             validateRequired(field);
         });
@@ -102,33 +107,49 @@ function validation(){
             removeErrorMsg(field);
         });
     });
+}
 
+function validateForm(){
+
+    let arr = [];
+    let allValid;
+
+    allFields.forEach( field => {
+       arr.push(validateRequired(field));
+    });
+
+    arr.includes(false) ? allValid = false : allValid = true;
     
-    function validateRequired(field){
+    return allValid;
+}
+
+function validateRequired(field){
         
-        if(!field.validity.valid) {
-            let msg = "This field is required!";
-            addErrorMsg(field, msg);
+    let hasValue = !field.validity.valueMissing;
 
-        } else {
-            removeErrorMsg(field);
-        }
+    if(!hasValue) {
+        let msg = "This field is required!";
+        addErrorMsg(field, msg);
+    } else {
+        removeErrorMsg(field);
     }
 
-    function addErrorMsg(field, msg){
-        let span = document.createElement("span");
-        span.classList.add("error-msg");
-        span.innerHTML = msg;
+    return hasValue;
+}
 
-        field.parentNode.appendChild(span);
-    }
+function addErrorMsg(field, msg){
+    let span = document.createElement("span");
+    span.classList.add("error-msg");
+    span.innerHTML = msg;
 
-    function removeErrorMsg(field){
-        let errorMsg = field.parentNode.querySelector(".error-msg");
+    field.parentNode.appendChild(span);
+}
 
-        if(errorMsg) {
-            field.parentNode.removeChild(errorMsg);
-        }
+function removeErrorMsg(field){
+    let errorMsg = field.parentNode.querySelector(".error-msg");
+
+    if(errorMsg) {
+        field.parentNode.removeChild(errorMsg);
     }
 }
 
