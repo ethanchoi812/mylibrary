@@ -5,14 +5,12 @@ let allFields = document.querySelectorAll(".form-field input[type=\"text\"], .fo
 document.getElementById('newbook').addEventListener("click", newBook);
 
 document.getElementById('form').addEventListener("submit", function(){
-    let isValid = false;
 
     event.preventDefault();
 
-    isValid = validateForm();
+    let isValid = validateForm();
 
     if (!isValid) {
-    
         return false;
     } else {
         addToLibrary(myLibrary);

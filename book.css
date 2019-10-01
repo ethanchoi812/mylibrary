@@ -106,6 +106,7 @@ button {
 }
 
 .error-msg {
+    color: #ff0000;
     display: inline-block;
     position: absolute;
 }
