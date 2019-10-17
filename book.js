@@ -1,25 +1,35 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-let myLibrary = [];
-let allFields = document.querySelectorAll(".form-field input[type=\"text\"], .form-field input[type=\"number\"]");
-
-document.getElementById('newbook').addEventListener("click", newBook);
-
-document.getElementById('form').addEventListener("submit", function(){
-
-    event.preventDefault();
-
-    let isValid = validateForm();
-
-    if (!isValid) {
-        return false;
-    } else {
-        addToLibrary(myLibrary);
-        render(myLibrary);
-        clearForm();
+class Library extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { myLibrary: [] };
     }
-});
 
-validation();
+    render() {
+        let allFields = document.querySelectorAll(".form-field input[type=\"text\"], .form-field input[type=\"number\"]");
+
+        document.getElementById('newbook').addEventListener("click", newBook);
+
+        document.getElementById('form').addEventListener("submit", function(){
+
+            event.preventDefault();
+
+            let isValid = validateForm();
+
+            if (!isValid) {
+                return false;
+            } else {
+                addToLibrary(myLibrary);
+                //render(myLibrary);
+                clearForm();
+            }
+        });
+
+//validation();
+    }
+}
 
 
 function Book(title, author, pages, readStatus){
@@ -74,14 +84,14 @@ function toggleRead(idx){
         myLibrary[idx].readColor = '#ffbb00';
     }
 
-    render(myLibrary);
+    //render(myLibrary);
 
 }
 
 
 function removeBook(idx){
    myLibrary.splice(idx, 1);
-   render(myLibrary);
+   //render(myLibrary);
 }
 
 
@@ -152,7 +162,7 @@ function removeErrorMsg(field){
 }
 
 
-function render(lib){
+/*function render(lib){
     let displayDiv = document.getElementById('display');
     displayDiv.innerHTML = "";
 
@@ -165,5 +175,9 @@ function render(lib){
                 <button class="remove" onclick="removeBook(${idx});">Remove</button>
             </div>`;
     });
-};
+};*/
 
+ReactDOM.render(
+    <Library />,
+    document.getElementById('root')
+);
