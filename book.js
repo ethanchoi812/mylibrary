@@ -1,15 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 
-import libraryForm from './libraryForm';
+let myLibrary = [];
+let allFields = document.querySelectorAll(".form-field input[type=\"text\"], .form-field input[type=\"number\"]");
 
-class Library extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { myLibrary: [] };
+document.getElementById('newbook').addEventListener("click", newBook);
+
+document.getElementById('form').addEventListener("submit", function(){
+
+    event.preventDefault();
+
+    let isValid = validateForm();
+
+    if (!isValid) {
+        return false;
+    } else {
+        addToLibrary(myLibrary);
+        render(myLibrary);
+        clearForm();
     }
+});
 
-}
+validation();
 
 
 function Book(title, author, pages, readStatus){
@@ -32,7 +42,25 @@ function newBook(){
 };
 
 
+function addToLibrary(lib){
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let readval = document.getElementById('read').checked;
 
+
+    if (readval === true) {
+        readStatus = 'I\'ve read it';
+        readColor = '#00ffc3';
+    } else {
+        readStatus = 'Not read';
+        readColor = '#ffbb00';
+    }
+    
+    let book = new Book(title, author, pages, readStatus, readColor);
+    lib.push(book);
+    return lib;
+};
 
 
 function toggleRead(idx){
@@ -46,14 +74,23 @@ function toggleRead(idx){
         myLibrary[idx].readColor = '#ffbb00';
     }
 
-    //render(myLibrary);
+    render(myLibrary);
 
 }
 
 
 function removeBook(idx){
    myLibrary.splice(idx, 1);
-   //render(myLibrary);
+   render(myLibrary);
+}
+
+
+function clearForm(){
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
+    document.getElementById('read').checked = false;
+
 }
 
 function validation(){
@@ -115,7 +152,7 @@ function removeErrorMsg(field){
 }
 
 
-/*function render(lib){
+function render(lib){
     let displayDiv = document.getElementById('display');
     displayDiv.innerHTML = "";
 
@@ -128,9 +165,5 @@ function removeErrorMsg(field){
                 <button class="remove" onclick="removeBook(${idx});">Remove</button>
             </div>`;
     });
-};*/
+};
 
-ReactDOM.render(
-    <Library />,
-    document.getElementById('root')
-);
