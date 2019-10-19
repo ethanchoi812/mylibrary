@@ -2,8 +2,6 @@
 let myLibrary = [];
 let allFields = document.querySelectorAll(".form-field input[type=\"text\"], .form-field input[type=\"number\"]");
 
-document.getElementById('newbook').addEventListener("click", newBook);
-
 document.getElementById('form').addEventListener("submit", function(){
 
     event.preventDefault();
@@ -35,11 +33,11 @@ function Book(title, author, pages, readStatus){
 };
 
 
-function newBook(){
+// function newBook(){
 
-    let showForm = document.getElementById('form').style;
-    showForm.display === 'none' ? showForm.display = 'block' : showForm.display = 'none';
-};
+//     let showForm = document.getElementById('form').style;
+//     showForm.display === 'none' ? showForm.display = 'block' : showForm.display = 'none';
+// };
 
 
 function addToLibrary(lib){
@@ -152,7 +150,7 @@ function removeErrorMsg(field){
 }
 
 
-function render(lib){
+function renderLibrary(lib){
     let displayDiv = document.getElementById('display');
     displayDiv.innerHTML = "";
 

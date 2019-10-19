@@ -7,7 +7,6 @@
     <body>
         <h1>My Library</h1>
         <div id="newbook-btn-container">
-            <button id="newbook">Add New Book</button>
         </div>
         <form id="form" style="display:none" novalidate>
             <div class="form-field form-field-title">
@@ -27,18 +26,17 @@
                 <input type="checkbox" id="read" name="read">
             </div>
             <div class="add-btn-container">
-                <button type="submit">Add Book</button>
+                <button>Submit</button>
             </div>
         </form>
         <div id="display"></div>
-        <div id="like_button_container"></div>
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     
     <!-- Load our React component. -->
-    <script src="like_button.js"></script>
+    <script src="toggleForm.js"></script>
 
     <script type="text/javascript" src="book.js"></script>
     </body>
