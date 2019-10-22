@@ -4,37 +4,76 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      myLibrary: []
+      title: '',
+      author: '',
+      pages: 0,
+      read: false
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit(event) {
       event.preventDefault();
-      alert("submitted!");
+      const { title, author, pages, read } = this.state;
+      const newBook = {title, author, pages, read}
+      this.props.onFormSubmit(newBook);
+
+      console.log(newBook);
   }
 
   render() {
     return (
-      /* Form component*/
-      <form onSubmit={this.handleSubmit} id="form" novalidate>
-        <div class="form-field form-field-title">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" required />
+      <form onSubmit={this.handleSubmit} id="form" noValidate>
+        <div className="form-field form-field-title">
+          <label>Title</label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            onChange={this.handleInputChange}
+            required />
         </div>
-        <div class="form-field form-field-author">
-          <label for="author">Author</label>
-          <input type="text" id="author" name="author" required />
+        <div className="form-field form-field-author">
+          <label>Author</label>
+          <input
+            id="author"
+            name="author"
+            type="text"
+            onChange={this.handleInputChange}
+            required />
         </div>
-        <div class="form-field form-field-pages">
-          <label for="pages">Number of Pages</label>
-          <input type="number" id="pages" name="pages" min="1" required />
+        <div className="form-field form-field-pages">
+          <label>Pages</label>
+          <input
+            id="pages"
+            name="pages"
+            type="number"
+            min="1"
+            onChange={this.handleInputChange}
+            required />
         </div>
-        <div class="form-field form-field-read">
-          <label for="read">Have I read it?</label>
-          <input type="checkbox" id="read" name="read" />
+        <div className="form-field form-field-read">
+          <label>Have I read it?</label>
+          <input
+            type="checkbox"
+            id="read"
+            name="read"
+            onChange={this.handleInputChange}
+           />
         </div>
-        <div class="add-btn-container">
+        <div className="add-btn-container">
           <button>Submit</button>
         </div>
       </form>);

@@ -13,25 +13,32 @@ class App extends React.Component {
     };
 
     this.handleToggleForm = this.handleToggleForm.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-  handleToggleForm(event){
+  handleToggleForm(event) {
     this.setState({ showForm: !this.state.showForm })
   }
+
+  handleSubmit(newBook) {
+    const library = this.state.myLibrary;
+    let arr = [];
+    arr.push(newBook);
+
+    this.setState({myLibrary:library.concat(arr)});
+  }
+
+
   render(){
     const showForm = this.state.showForm;
     const form = showForm ? 
-      <Form /> :
+      <Form onFormSubmit={this.handleSubmit} /> :
     null
 
     return (
       <div className="App">
         <h1>My Library</h1>
-
-        {/* Add new book button component*/}
         <NewBookBtn onToggleForm={this.handleToggleForm} />
-        {/* Display books component*/}
         {form}
         <div id="display"></div> 
       </div>

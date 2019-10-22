@@ -1,22 +1,110 @@
-.App {
-  text-align: center;
+body {
+    background: #eee;
+    color: #333;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
 }
 
-.App-logo {
-  height: 40vmin;
+h1 {
+    font-family: "Roboto Slab", serif;
+    text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+form {
+    background: #fff;
+    padding: 20px 15px 30px;  
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
 }
 
-.App-link {
-  color: #09d3ac;
+.form-field {
+    display: inline-block;
+    margin-right: 50px;
+}
+
+.form-field label {
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.form-field input[type=text],
+.form-field input[type=number]{
+    display: inline-block;
+    font-size: 18px;
+    padding: 6px 10px;
+}
+
+.form-field input[type=text] {
+    width: 100%;
+}
+
+.form-field-pages{
+    width: 10%;
+}
+
+.form-field-pages input {
+    width: 100%;
+}
+
+button {
+    font-size: 16px;
+    padding: 12px 15px;
+    background: #ff6200;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#newbook-btn-container {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 25px; 
+}
+
+.add-btn-container {
+    display: inline-block;
+}
+
+.add-btn-container button {
+    margin-top: 25px;
+}
+
+#display {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.book-item {
+    display: inline-block;
+    border: 1px solid #00ffc3;
+    padding: 15px 20px;
+    max-width: 33%; 
+    margin: 12px;
+    text-align: center;
+}
+
+.remove {
+    display: block;
+    font-size: 12px;
+    background-color: #ccc;
+    padding: 3px 5px;
+    margin: 0 auto 0 0;
+}
+
+.readLine {
+    border-radius: 1px;
+    float: right;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 2px 5px;
+}
+
+.error-msg {
+    color: #ff0000;
+    display: inline-block;
+    position: absolute;
 }
