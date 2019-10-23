@@ -78,6 +78,7 @@ button {
 }
 
 .book-item {
+    background: #fff;
     display: inline-block;
     border: 1px solid #00ffc3;
     padding: 15px 20px;

@@ -3,6 +3,7 @@ import './App.css';
 
 import NewBookBtn from './newBookBtn';
 import Form from './theForm';
+import Library from './Library';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,19 +29,20 @@ class App extends React.Component {
     this.setState({myLibrary:library.concat(arr)});
   }
 
-
   render(){
     const showForm = this.state.showForm;
     const form = showForm ? 
       <Form onFormSubmit={this.handleSubmit} /> :
-    null
+    null;
+    
+    const theLibrary = this.state.myLibrary;
 
     return (
       <div className="App">
         <h1>My Library</h1>
         <NewBookBtn onToggleForm={this.handleToggleForm} />
         {form}
-        <div id="display"></div> 
+        <Library myLibrary={theLibrary} />
       </div>
       );
     }
