@@ -14,11 +14,21 @@ class App extends React.Component {
     };
 
     this.handleToggleForm = this.handleToggleForm.bind(this);
+    this.handleReadStatusChange = this.handleReadStatusChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   handleToggleForm(event) {
     this.setState({ showForm: !this.state.showForm })
+  }
+
+  handleReadStatusChange(idx){
+    const library = this.state.myLibrary;
+    const book = library[idx];
+    console.log(book);
+
+    // library[idx].read = !readStatus;
+
   }
 
   handleSubmit(newBook) {
@@ -28,6 +38,8 @@ class App extends React.Component {
 
     this.setState({myLibrary:library.concat(arr)});
   }
+
+
 
   render(){
     const showForm = this.state.showForm;
@@ -42,7 +54,7 @@ class App extends React.Component {
         <h1>My Library</h1>
         <NewBookBtn onToggleForm={this.handleToggleForm} />
         {form}
-        <Library myLibrary={theLibrary} />
+        <Library myLibrary={theLibrary} onReadStatusChange={this.handleReadStatusChange} />
       </div>
       );
     }
