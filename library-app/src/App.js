@@ -15,6 +15,7 @@ class App extends React.Component {
 
     this.handleToggleForm = this.handleToggleForm.bind(this);
     this.handleReadStatusChange = this.handleReadStatusChange.bind(this);
+    this.handleRemoveBook = this.handleRemoveBook.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
@@ -24,11 +25,16 @@ class App extends React.Component {
 
   handleReadStatusChange(idx){
     const library = this.state.myLibrary;
-    const book = library[idx];
-    console.log(book);
+    library[idx].read = !library[idx].read;
 
-    // library[idx].read = !readStatus;
+    this.setState({ myLibrary: library });
+  }
 
+  handleRemoveBook(idx){
+    const library = this.state.myLibrary;
+    library.splice(idx,1);
+
+    this.setState({ myLibrary: library });
   }
 
   handleSubmit(newBook) {
@@ -54,7 +60,13 @@ class App extends React.Component {
         <h1>My Library</h1>
         <NewBookBtn onToggleForm={this.handleToggleForm} />
         {form}
-        <Library myLibrary={theLibrary} onReadStatusChange={this.handleReadStatusChange} />
+        <div id="display">
+        <Library
+          myLibrary={theLibrary}
+          onReadStatusChange={this.handleReadStatusChange}
+          onRemoveBook={this.handleRemoveBook}
+        />
+        </div>
       </div>
       );
     }

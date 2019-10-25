@@ -74,17 +74,29 @@ button {
 #display {
     font-size: 20px;
     font-weight: 700;
+    margin: 0 auto;
     margin-top: 20px;
+    padding: 30px;
+    width: 80%;
 }
 
 .book-item {
     background: #fff;
     display: inline-block;
-    border: 1px solid #00ffc3;
+    border: 5px solid #00ffc3;
     padding: 15px 20px;
     max-width: 33%; 
     margin: 12px;
     text-align: center;
+    width: auto;
+}
+
+.book-info {
+    clear: both;
+    display: inline-block;
+    font-weight: 700;
+    margin: 20px 10px;
+    width: 100%;
 }
 
 .remove {
@@ -96,6 +108,7 @@ button {
 }
 
 .readLine {
+    display: block;
     border-radius: 1px;
     float: right;
     font-size: 12px;
