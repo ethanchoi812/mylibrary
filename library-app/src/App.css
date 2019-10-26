@@ -83,12 +83,17 @@ button {
 .book-item {
     background: #fff;
     display: inline-block;
-    border: 5px solid #00ffc3;
+    border: 5px solid #ffbb00;
     padding: 15px 20px;
     max-width: 33%; 
     margin: 12px;
     text-align: center;
     width: auto;
+    max-width: 25%;;
+}
+
+.have-read {
+    border-color: #00ffc3;
 }
 
 .book-info {
@@ -108,13 +113,24 @@ button {
 }
 
 .readLine {
+    background: #ffbb00;
     display: block;
     border-radius: 1px;
-    float: right;
+    right: 10px;
     font-size: 12px;
     font-weight: 400;
     cursor: pointer;
     padding: 2px 5px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+.have-read .readLine{
+    background: #00ffc3;
 }
 
 .error-msg {

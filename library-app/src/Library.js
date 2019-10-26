@@ -19,13 +19,12 @@ class Library extends React.Component{
     const myLibrary = this.props.myLibrary;
 
     const books = myLibrary.map((book, idx) =>
-
-      <div className="book-item" key={idx}>
+      
+      <div className={book.read ? "book-item have-read" : "book-item"} key={idx}>
         <div 
         className="readLine"
         dataindex={idx}
-        onClick={this.handleClick}
-          style={book.read ? { background: '#00ffc3' } : { background:'#ffbb00'}}>
+        onClick={this.handleClick}>
         {book.read ? 'I\'ve read this' : 'Not read'}
         </div>
         <div className="book-info">{book.title} by {book.author}, {book.pages} pages</div>
