@@ -27,10 +27,12 @@ class Form extends React.Component {
   handleSubmit(event) {
       event.preventDefault();
       const { title, author, pages, read } = this.state;
-      const newBook = {title, author, pages, read}
-      this.props.onFormSubmit(newBook);
 
-      console.log(newBook);
+      const newBook = {title, author, pages, read}
+
+    if (title !== "" && author !== "" && pages !== ""){
+      this.props.onFormSubmit(newBook)
+    }
   }
 
   render() {
