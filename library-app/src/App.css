@@ -90,8 +90,8 @@ button {
     max-width: 33%; 
     margin: 12px;
     text-align: center;
-    width: auto;
-    max-width: 25%;;
+    width: 20%;
+    max-width: 25%;
 }
 
 .have-read {
@@ -101,9 +101,15 @@ button {
 .book-info {
     clear: both;
     display: inline-block;
-    font-weight: 700;
-    margin: 20px 10px;
+    font-weight: 400;
+    margin: 0 auto;
+    height: 100px;
     width: 100%;
+    overflow-y: scroll;
+}
+
+.book-info span {
+    font-weight: 700;
 }
 
 .remove {

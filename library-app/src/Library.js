@@ -27,7 +27,10 @@ class Library extends React.Component{
         onClick={this.handleClick}>
         {book.read ? 'I\'ve read this' : 'Not read'}
         </div>
-        <div className="book-info">{book.title} by {book.author}, {book.pages} pages</div>
+        <div className="book-info">
+          <p><span>{book.title}</span> by <span>{book.author}</span></p>
+          <p><span>{book.pages}</span>pages</p>
+        </div>
         <button 
         className="remove"
         dataindex={idx}
