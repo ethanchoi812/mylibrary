@@ -6,7 +6,7 @@ class Form extends React.Component {
     this.state = {
       title: '',
       author: '',
-      pages: 0,
+      pages: '',
       read: false,
       errors: {
         title:false,
@@ -25,7 +25,9 @@ class Form extends React.Component {
     const name = target.name;
     const errors = this.state.errors;
 
-    errors[name] = false;
+    if (name !== 'read'){
+      errors[name] = false;
+    }
 
     this.setState({
       [name]: value,
@@ -37,9 +39,10 @@ class Form extends React.Component {
       event.preventDefault();
       const { title, author, pages, read } = this.state;
       const newBook = {title, author, pages, read};
+      const required = {title, author, pages}
       const errors = this.state.errors;
 
-      for (let [key, value] of Object.entries(newBook)) {
+    for (let [key, value] of Object.entries(required)) {
         if (!value) {
           errors[key] = true;
           this.setState({ 
@@ -51,6 +54,15 @@ class Form extends React.Component {
       if (title && author && pages > 0) {
       this.props.onFormSubmit(newBook);
     }
+
+     this.setState({
+        title: '',
+        author: '',
+        pages: '',
+        read: false
+     });
+
+
   }
 
   render() {
@@ -67,7 +79,8 @@ class Form extends React.Component {
             type="text"
             onChange={this.handleInputChange}
             className={
-              errors.title ? 'error' : ''} 
+              errors.title ? 'error' : ''}
+            value={this.state.title} 
             required />
           {errors.title ?
             <div className="error-msg">This field is required</div> :
@@ -82,7 +95,8 @@ class Form extends React.Component {
             type="text"
             onChange={this.handleInputChange}
             className={
-              errors.author ? 'error' : ''} 
+              errors.author ? 'error' : ''}
+            value={this.state.author} 
             required />
           {errors.author ?
             <div className="error-msg">This field is required</div> :
@@ -97,7 +111,8 @@ class Form extends React.Component {
             min="1"
             onChange={this.handleInputChange}
             className={
-              errors.pages ? 'error' : ''} 
+              errors.pages ? 'error' : ''}
+            value={this.state.pages} 
             required />
           {errors.pages ?
             <div className="error-msg">This field is required</div> :
@@ -110,6 +125,7 @@ class Form extends React.Component {
             id="read"
             name="read"
             onChange={this.handleInputChange}
+            checked={this.state.read}
            />
         </div>
         <div className="add-btn-container">

@@ -29,7 +29,7 @@ class Library extends React.Component{
         </div>
         <div className="book-info">
           <p><span>{book.title}</span> by <span>{book.author}</span></p>
-          <p><span>{book.pages}</span>pages</p>
+          <p><span>{book.pages}</span> pages</p>
         </div>
         <button 
         className="remove"
